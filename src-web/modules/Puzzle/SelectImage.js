@@ -13,7 +13,7 @@ class SelectImage {
 	}
 	
 	async init() {
-		const response = await fetch("images.json");
+		const response = await fetch("images.php");
 		const list = await response.json();
 		let caller = new EventCallerMouse();
 		for(let item of list) {
