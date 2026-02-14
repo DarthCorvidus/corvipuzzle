@@ -9,13 +9,17 @@ class SelectImage {
 		this.puzzle = puzzle;
 		this.body = puzzle.getBody();
 		this.select = document.createElement("select");
-		let images = ["nothing.png"]
-		let names = ["Nothing"];
+		this.init();
+	}
+	
+	async init() {
+		const response = await fetch("images.json");
+		const list = await response.json();
 		let caller = new EventCallerMouse();
-		for(let i=0;i<images.length;i++) {
+		for(let item of list) {
 			let option = document.createElement("option");
-			option.innerHTML = names[i];
-			option.value = images[i];
+			option.innerHTML = item;
+			option.value = item;
 			caller.attach(option);
 			this.select.appendChild(option);
 		}
