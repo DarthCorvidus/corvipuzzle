@@ -1,0 +1,35 @@
+import { EventCallerMouse } from '/modules/EventCallerMouse.js';
+class SelectImage {
+	/**
+	 * 
+	 * @param {Puzzle} puzzle
+	 * @returns {SelectSize}
+	 */
+	constructor(puzzle) {
+		this.puzzle = puzzle;
+		this.body = puzzle.getBody();
+		this.select = document.createElement("select");
+		let images = ["nothing.png"]
+		let names = ["Nothing"];
+		let caller = new EventCallerMouse();
+		for(let i=0;i<images.length;i++) {
+			let option = document.createElement("option");
+			option.innerHTML = names[i];
+			option.value = images[i];
+			caller.attach(option);
+			this.select.appendChild(option);
+		}
+		caller.addClickListener(this);
+		this.select.style.position = "absolute";
+		this.select.style.top = "10px";
+		this.select.style.left = "200px";
+		this.body.appendChild(this.select);
+	}
+	
+	onClick(event) {
+		this.puzzle.setImage("images/"+event.target.value);
+		this.puzzle.create();
+	}
+}
+
+export{ SelectImage };
