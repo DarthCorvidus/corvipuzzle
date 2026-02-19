@@ -29,6 +29,9 @@ class MainPuzzle {
 		this.selectSize = new SelectSize(this.puzzle);
 		this.selectImage = new SelectImage(this.puzzle);
 		this.showImage = new ShowImage(this.puzzle);
+		document.getElementById("tilesize").appendChild(this.selectSize.getElement());
+		document.getElementById("imageselect").appendChild(this.selectImage.getElement());
+		document.getElementById("show").appendChild(this.showImage.getElement());
 		//this.animal = new Dog();
 	}
 }

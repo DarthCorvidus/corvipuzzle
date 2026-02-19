@@ -10,11 +10,11 @@ class ShowImage {
 		this.img = this.puzzle.getImg();
 		this.body = puzzle.getBody();
 		this.button = document.createElement("button");
-		this.body.appendChild(this.button);
+		//this.body.appendChild(this.button);
 		this.button.innerHTML = "Show";	
-		this.button.style.position = "absolute";
-		this.button.style.left = "340px";
-		this.button.style.top = "10px";
+		//this.button.style.position = "absolute";
+		//this.button.style.left = "340px";
+		//this.button.style.top = "10px";
 		//this.button.addMouseDownListener(this);
 		let caller = new EventCallerMouse();
 		caller.attach(this.button);
@@ -32,6 +32,10 @@ class ShowImage {
 	
 	onMouseUp(event) {
 		this.img.style.display = "none";
+	}
+	
+	getElement() {
+		return this.button;
 	}
 }
 

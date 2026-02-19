@@ -24,10 +24,14 @@ class SelectImage {
 			this.select.appendChild(option);
 		}
 		caller.addClickListener(this);
-		this.select.style.position = "absolute";
-		this.select.style.top = "10px";
-		this.select.style.left = "200px";
-		this.body.appendChild(this.select);
+		//this.select.style.position = "absolute";
+		//this.select.style.top = "10px";
+		//this.select.style.left = "200px";
+		//this.body.appendChild(this.select);
+	}
+	
+	getElement() {
+		return this.select;
 	}
 	
 	onClick(event) {

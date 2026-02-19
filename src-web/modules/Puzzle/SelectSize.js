@@ -19,15 +19,19 @@ class SelectSize {
 			this.select.appendChild(option);
 		}
 		caller.addClickListener(this);
-		this.select.style.position = "absolute";
-		this.select.style.top = "10px";
-		this.select.style.left = "40px";
-		this.body.appendChild(this.select);
+		//this.select.style.position = "absolute";
+		//this.select.style.top = "10px";
+		//this.select.style.left = "40px";
+		//this.body.appendChild(this.select);
 	}
 	
 	onClick(event) {
 		this.puzzle.setSize(event.target.value);
 		this.puzzle.create();
+	}
+	
+	getElement() {
+		return this.select;
 	}
 }
 
