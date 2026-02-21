@@ -5,7 +5,7 @@ import { Tile }  from '/modules/Puzzle/Tile.js';
 class Puzzle {
 	constructor(body, image) {
 		this.body = body;
-		this.size = 50;
+		this.size = 100;
 		this.image = image;
 		this.caller = new EventCallerMouse();
 		this.tiles = [];
@@ -63,11 +63,18 @@ class Puzzle {
 		console.log("Dimensions: "+this.img.width+"×"+this.img.height);
 		let widthTiles = Math.ceil(this.img.width/this.size);
 		let heightTiles = Math.ceil(this.img.height/this.size);
-		console.log("Width: "+widthTiles);
-		console.log("Height: "+heightTiles);
+		let widthCanvas = widthTiles * this.size;
+		let heightCanvas = heightTiles * this.size;
+		let offsetX = Math.floor((widthCanvas - this.img.width)/2);
+		let offsetY = Math.floor((heightCanvas - this.img.height)/2);
+		console.log("X Tiles: "+widthTiles);
+		console.log("Y Tiles: "+heightTiles);
+		console.log("Canvas Size: ("+widthCanvas+", "+heightCanvas+")");
+		console.log("Offset: ("+offsetX+", "+offsetY+")");
+		
 		for(let y=0;y<heightTiles;y++) {
 			for(let x=0;x<widthTiles;x++) {
-				this.createTile(x, y);
+				this.createTile(x, y, offsetX, offsetY);
 			}
 		}
 		let coord = [];
@@ -82,8 +89,8 @@ class Puzzle {
 		//this.caller.addClickListener(this);
 	}
 	
-	createTile(x, y) {
-		let tile = new Tile(this.size, x, y, this.img.src);
+	createTile(x, y, offsetX, offsetY) {
+		let tile = new Tile(this.size, x, y, this.img.src, offsetX, offsetY);
 		tile.getDiv().id = this.tiles.length;
 		this.body.appendChild(tile.getDiv());
 		this.caller.attach(tile.getDiv());

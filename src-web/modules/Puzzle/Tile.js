@@ -1,6 +1,8 @@
 import { EventCallerMouse } from '/modules/EventCallerMouse.js';
 class Tile {
-	constructor(size, x, y, image, id) {
+	constructor(size, x, y, image, offsetX, offsetY) {
+		this.offsetX = offsetX;
+		this.offsetY = offsetY;
 		this.x = x;
 		this.y = y;
 		this.originalX = x;
@@ -19,8 +21,8 @@ class Tile {
 		this.div.style.position = "absolute";
 		this.div.style.left = (size*x)+"px";
 		this.div.style.top = ((size*y)+100)+"px";
-		this.div.style.backgroundPositionX = (-(x*size))+"px";
-		this.div.style.backgroundPositionY = (-(y*size))+"px";
+		this.div.style.backgroundPositionX = ((-(x*size))+this.offsetX)+"px";
+		this.div.style.backgroundPositionY = ((-(y*size))+this.offsetY)+"px";
 		let caller = new EventCallerMouse();
 		caller.attach(this.div);
 		caller.addMouseEnterListener(this);
