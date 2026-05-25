@@ -20,14 +20,10 @@ class SelectImage {
 			let option = document.createElement("option");
 			option.innerHTML = item;
 			option.value = item;
-			caller.attach(option);
 			this.select.appendChild(option);
 		}
+		caller.attach(this.select);
 		caller.addClickListener(this);
-		//this.select.style.position = "absolute";
-		//this.select.style.top = "10px";
-		//this.select.style.left = "200px";
-		//this.body.appendChild(this.select);
 	}
 	
 	getElement() {
