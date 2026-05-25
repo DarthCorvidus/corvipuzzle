@@ -17,6 +17,8 @@ class Tile {
 		this.div.style.height = size+"px";
 		this.div.style.maxHeight = size+"px";
 		this.div.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0, 0.5)), url("+image+")";
+		// gradient & image are two layers; gradient needs to be repeated, image needs to be non-repeated
+		this.div.style.backgroundRepeat = "repeat, no-repeat";
 		//this.div.style.backgroundImage = "linear-gradient(black, white), url("+image+")";
 		this.div.style.position = "absolute";
 		this.div.style.left = (size*x)+"px";
@@ -43,6 +45,7 @@ class Tile {
 	
 	highlight() {
 		this.div.style.backgroundImage = "url("+this.image+")";
+		this.div.style.backgroundRepeat = "no-repeat";
 	}
 	
 	lowlight() {
@@ -50,6 +53,7 @@ class Tile {
 			return;
 		}
 		this.div.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0, 0.5)), url("+this.image+")";
+		this.div.style.backgroundRepeat = "repeat, no-repeat";
 	}
 	
 	isCorrect() {
